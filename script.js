@@ -70,12 +70,59 @@ btnScrollTo.addEventListener('click', function (e) {
   //   s1coords.left + window.pageXOffset,
   //   s1coords.top + window.pageYOffset);
 
-  window.scrollTo({
-    left: s1coords.left + window.pageXOffset,
-    top: s1coords.top + window.pageYOffset,
-    behavior: 'smooth',
-  });
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
 
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+// page navigation
 
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  // matching strategy 
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+// document.querySelectorAll('.nav__link').forEach(
+//   function (el) {
+//     el.addEventListener('click', function (e) {
+//       e.preventDefault();
+//       const id = this.getAttribute('href');
+//       console.log(id);
+//       document.querySelector(id).scrollIntoView({
+//         behavior: 'smooth'
+//       });
+//     });
+//   });
+
+const h1 = document.querySelector('h1');
+const alertH1 = function (e) {
+  alert('addEventLister: Great! :D');
+
+};
+
+h1.addEventListener('mouseenter', alertH1);
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)}, ${randomInt(0, 225)}, ${randomInt(0, 225)})`;
+
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
