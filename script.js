@@ -58,11 +58,11 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function 
 
 
 
-message.style.backgroundColor = '#37383d';
+// message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
 message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 //
 
@@ -106,14 +106,14 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 //     });
 //   });
 
-const h1 = document.querySelector('h1');
-const alertH1 = function (e) {
-  alert('addEventLister: Great! :D');
+// const h1 = document.querySelector('h1');
+// const alertH1 = function (e) {
+//   alert('addEventLister: Great! :D');
 
-};
+// };
 
-h1.addEventListener('mouseenter', alertH1);
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+// h1.addEventListener('mouseenter', alertH1);
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // const randomInt = (min, max) =>
 //   Math.floor(Math.random() * (max - min + 1) + min);
@@ -179,3 +179,52 @@ const handleHover = function (e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+const initialCoords = section1.getBoundingClientRect();
+
+//sticky navigation
+
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky')
+//   else nav.classList.remove('sticky');
+// });
+
+
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+// const obsOptions = {
+//   root: null,
+//   threshold: [0, 0.2]
+// };
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+// const stickyNav = function (entries) {
+//   const [entry] = entries;
+
+//   if (!entry.isIntersecting) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// };
+
+// const headerObserver = new IntersectionObserver(stickyNav, {
+//   root: null,
+//   threshold: 0,
+// });
+
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+});
+
+headerObserver.observe(header);
